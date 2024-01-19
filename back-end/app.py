@@ -5,9 +5,11 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+# Configuração do banco de dados SQLite
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///fornecedores.sqlite'
 db = SQLAlchemy(app)
 
+# Modelo Fornecedor
 class Fornecedor(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(100), nullable=False)
@@ -17,10 +19,11 @@ class Fornecedor(db.Model):
     num_total_clientes = db.Column(db.Integer, nullable=False)
     avaliacao_media = db.Column(db.Float, nullable=False)
 
+# Rota para buscar fornecedores
 @app.route('/escolher_fornecedor', methods=['POST'])
 def escolher_fornecedor():
     try:
-        dados_usuario = request.get_json() 
+        dados_usuario = request.get_json()
         consumo_usuario = dados_usuario.get('consumo_mensal_kwh', 0)
 
         fornecedores_disponiveis = Fornecedor.query.filter(Fornecedor.limite_minimo_kwh < consumo_usuario).all()
@@ -36,15 +39,10 @@ def escolher_fornecedor():
             } for fornecedor in fornecedores_disponiveis
         ]
 
-        return jsonify({'fornecedores': resultado_json})
+        return jsonify(resultado_json)
     
-    except Exception as e: 
-        print(e)
-        raise
-    finally:
-        db.session.close()
+    except Exception as e:
+        return jsonify({'error': str(e)})
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
     app.run(debug=True)

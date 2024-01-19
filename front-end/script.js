@@ -9,7 +9,7 @@ function buscarFornecedores() {
     body: JSON.stringify({ consumo_mensal_kwh: consumoMensal }),
   })
     .then(response => response.json())
-    .then(data => exibirResultado(data.fornecedores))
+    .then(data => exibirResultado(data))  // Corrigir aqui para acessar diretamente data
     .catch(error => console.error('Erro na requisição:', error));
 }
 
@@ -30,3 +30,4 @@ function exibirResultado(fornecedores) {
     `;
   });
 }
+document.getElementById('seuBotao').addEventListener('click', buscarFornecedores);
