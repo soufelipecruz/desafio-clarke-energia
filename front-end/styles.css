@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&display=swap');
+
+* {
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box;
+  text-decoration: none;
+  }
+
+body {
+    font-family: Comfortaa, sans-serif;
+    background-color: #030303;
+    margin: 0;
+    padding: 0;
+  }
+  main{
+    /* padding: 200px; */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1{
+    display: flex;
+    justify-content: center;
+
+  }
+  .container {
+    width: 800px;
+    border-radius: 12px;
+    background: #00AA62;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+  }
+  
+  .input-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 90px;
+    margin-bottom: 20px;
+    border-color: white;
+    border-radius: 12px;
+  }
+
+  .fornecedores-list{
+    display: flex;
+    flex-direction: column;
+    padding: 70px;
+    padding-top: 10px;
+  }
+  button:hover{
+    color: #00AA62;
+  }
+  button {
+    background-color: #ffffff;
+    color: #00AA62;
+    width: 150px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  .fornecedor-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .fornecedor-card img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  input {
+    width: 255px;
+    height: 32px;
+    padding: 16px;
+    outline: none;
+  }
+
+ footer{
+    background-color: #00AA62;
+    
+ }
