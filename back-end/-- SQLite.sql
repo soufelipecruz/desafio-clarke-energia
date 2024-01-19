@@ -2,7 +2,8 @@
 
 INSERT INTO fornecedor (nome, estado, custo_por_kwh, limite_minimo_kwh, num_total_clientes, avaliacao_media)
 VALUES
-    ('Fornecedor A', 'Estado A', 0.15, 100, 500, 4.5),
-    ('Fornecedor B', 'Estado B', 0.12, 150, 700, 4.2),
-    ('Fornecedor C', 'Estado C', 0.18, 80, 300, 4.8),
-    ('Fornecedor D', 'Estado D', 0.14, 120, 600, 4.0);
+    ('Alupar', 'SP', 0.18, 1000, 1500, 4.2),
+    ('AES', 'RJ', 0.22, 800, 2000, 4.5),
+    ('Celesc', 'SC', 0.19, 1200, 1800, 4.0),
+    ('Cemig', 'MG', 0.20, 1500, 1700, 4.3),
+    ('Enel', 'SP', 0.21, 900, 2200, 4.1);
