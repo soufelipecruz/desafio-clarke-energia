@@ -5,7 +5,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///fornecedores.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///fornecedores.sqlite'
 db = SQLAlchemy(app)
 
 class Fornecedor(db.Model):
@@ -20,7 +20,7 @@ class Fornecedor(db.Model):
 @app.route('/escolher_fornecedor', methods=['POST'])
 def escolher_fornecedor():
     try:
-        dados_usuario = request.get_json()
+        dados_usuario = request.get_json() 
         consumo_usuario = dados_usuario.get('consumo_mensal_kwh', 0)
 
         fornecedores_disponiveis = Fornecedor.query.filter(Fornecedor.limite_minimo_kwh < consumo_usuario).all()
@@ -38,9 +38,13 @@ def escolher_fornecedor():
 
         return jsonify({'fornecedores': resultado_json})
     
+    except Exception as e: 
+        print(e)
+        raise
     finally:
         db.session.close()
 
 if __name__ == '__main__':
-    db.create_all()
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)
